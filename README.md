@@ -1,3 +1,4 @@
+- cd openwrt && make menuconfig
 
 [[Telegram聊天吹水群](https://t.me/heiheiheio)]
 
