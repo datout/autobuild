@@ -191,6 +191,7 @@ user_rules:
   - '@@||hub5pn.wap.sandai.net^$client=''10.0.0.60'''
   - '@@||etl-xlmc-ssl.xunlei.com^$client=''10.0.0.60'''
   - '@@||hub5pn.wap.sandai.net^$client=''10.0.0.58'''
+  - '@@||etl-xlmc-ssl.xunlei.com^$client=''10.0.0.58'''
   - ""
 dhcp:
   enabled: false
