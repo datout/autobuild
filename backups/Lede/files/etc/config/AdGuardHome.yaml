@@ -15,12 +15,12 @@ dns:
     - 0.0.0.0
   port: 5553
   anonymize_client_ip: false
-  protection_enabled: false
+  protection_enabled: true
   blocking_mode: default
   blocking_ipv4: ""
   blocking_ipv6: ""
   blocked_response_ttl: 10
-  protection_disabled_until: 2023-05-11T12:23:25.993584907Z
+  protection_disabled_until: null
   parental_block_host: family-block.dns.adguard.com
   safebrowsing_block_host: standard-block.dns.adguard.com
   ratelimit: 0
@@ -35,7 +35,6 @@ dns:
     - 8.8.8.8
     - https://dns.alidns.com/dns-query
     - https://1.1.1.1/dns-query
-    - https://dns.pub/dns-query
     - https://dns.google/dns-query
   upstream_dns_file: ""
   bootstrap_dns:
@@ -164,12 +163,10 @@ user_rules:
   - '@@||flydigi.com^'
   - '@@||pv.sohu.com^$important'
   - '@@||o1098464.ingest.sentry.io^$important'
-  - '@@||nj.t.bcsp2p.baidu.com^$client=''10.0.0.12'''
   - '||awaliwa.com^$important'
   - '||euqq.cn^$important'
   - '||qisaoba.com^$important'
   - '||atgowan.com^$important'
-  - '@@||etl-xlmc-ssl.xunlei.com^$client=''10.0.0.12'''
   - '@@||hub5pn.wap.sandai.net^$client=''10.0.0.50'''
   - '@@||etl-xlmc-ssl.xunlei.com^$client=''10.0.0.52'''
   - '@@||dataflow.biliapi.com^$client=''10.0.0.68'''
@@ -178,9 +175,7 @@ user_rules:
   - '@@||etl-xlmc-ssl.xunlei.com^$client=''10.0.0.50'''
   - '@@||idx.m.hub.sandai.net^$client=''10.0.0.50'''
   - '@@||master.wap.dphub.sandai.net^$client=''10.0.0.50'''
-  - '@@||hub5pn.wap.sandai.net^$client=''10.0.0.12'''
   - '@@||dataflow.biliapi.com^$client=''10.0.0.53'''
-  - '@@||master.wap.dphub.sandai.net^$client=''10.0.0.12'''
   - '@@||dataflow.biliapi.com^$client=''10.0.0.56'''
   - '@@||api.e.kuaishou.com^$important'
   - '@@||activity.e.kuaishou.com^$important'
@@ -191,6 +186,8 @@ user_rules:
   - '@@||hub5pn.wap.sandai.net^$client=''10.0.0.13'''
   - '@@||hub5pn.wap.sandai.net^$client=''10.0.0.60'''
   - '@@||etl-xlmc-ssl.xunlei.com^$client=''10.0.0.60'''
+  - '@@||hub5pn.wap.sandai.net^$client=''10.0.0.58'''
+  - '@@||etl-xlmc-ssl.xunlei.com^$client=''10.0.0.58'''
   - ""
 dhcp:
   enabled: false
