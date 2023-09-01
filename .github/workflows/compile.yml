@@ -28,6 +28,21 @@ jobs:
     name: 编译 "${{matrix.target}}"
     runs-on: ubuntu-22.04
     if: ${{ github.event.repository.owner.id }} == ${{ github.event.sender.id }}
+
+    - name: Free Disk Space (Ubuntu)
+  uses: jlumbroso/free-disk-space@main
+  with:
+    # this might remove tools that are actually needed,
+    # if set to "true" but frees about 6 GB
+    tool-cache: true
+    
+    # all of these default to true, but feel free to set to
+    # "false" if necessary for your workflow
+    android: true
+    dotnet: true
+    haskell: true
+    large-packages: true
+    swap-storage: true
     
     env:
       FOLDER_NAME: ${{ matrix.target }}
@@ -39,6 +54,11 @@ jobs:
     steps:    
     - name: 准备结束
       uses: actions/checkout@v3
+       
+    - name: Disk space
+      run: |
+           echo "Free space:"
+           df -h
 
     - name: 检测文件和对比上游版本
       run: |
