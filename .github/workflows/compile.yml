@@ -74,6 +74,11 @@ jobs:
         haskell: true
         large-packages: true
         swap-storage: true
+
+    - name: Disk space
+      run: |
+           echo "Free space:"
+           df -h
         
     - name: 部署编译环境
       env:
