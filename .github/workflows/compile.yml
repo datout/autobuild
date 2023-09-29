@@ -61,7 +61,7 @@ jobs:
         cd ${GITHUB_WORKSPACE}
         source build/${FOLDER_NAME}/common.sh && CPU_Priority
 
-      - name: Space cleanup and Initialization environment
+    - name: Space cleanup and Initialization environment
         env:
           DEBIAN_FRONTEND: noninteractive
         run: |
