@@ -70,6 +70,9 @@ export Cancel_running="0"                    # 取消路由器每天跑分任务
 #echo '#[ -n "$(command -v ip6tables)" ] && ip6tables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 53' >> /etc/firewall.user
 #echo '#[ -n "$(command -v ip6tables)" ] && ip6tables -t nat -A PREROUTING -p tcp --dport 53 -j REDIRECT --to-ports 53' >> /etc/firewall.user
 
+echo 'src-git helloworld https://github.com/fw876/helloworld.git;main' >>feeds.conf.default
+echo '### SSR helloworld ###'
+
 # 晶晨CPU系列打包固件设置(不懂请看说明)
 export amlogic_model="s905d"
 export amlogic_kernel="5.10.01_6.1.01"
