@@ -1,4 +1,7 @@
 http:
+  pprof:
+    port: 6060
+    enabled: false
   address: 0.0.0.0:3000
   session_ttl: 720h
 users:
@@ -9,21 +12,14 @@ block_auth_min: 15
 http_proxy: ""
 language: ""
 theme: auto
-debug_pprof: false
 dns:
   bind_hosts:
     - 0.0.0.0
   port: 5553
   anonymize_client_ip: false
-  protection_enabled: true
-  blocking_mode: default
-  blocking_ipv4: ""
-  blocking_ipv6: ""
-  blocked_response_ttl: 10
-  protection_disabled_until: null
-  parental_block_host: family-block.dns.adguard.com
-  safebrowsing_block_host: standard-block.dns.adguard.com
   ratelimit: 0
+  ratelimit_subnet_len_ipv4: 24
+  ratelimit_subnet_len_ipv6: 56
   ratelimit_whitelist: []
   refuse_any: true
   upstream_dns:
@@ -43,6 +39,7 @@ dns:
     - 223.5.5.5
     - 114.114.114.14
     - 8.8.8.8
+  fallback_dns: []
   all_servers: true
   fastest_addr: false
   fastest_timeout: 1s
@@ -60,38 +57,17 @@ dns:
   cache_ttl_max: 0
   cache_optimistic: true
   bogus_nxdomain: []
-  aaaa_disabled: false
-  enable_dnssec: false
+  aaaa_disabled: true
+  enable_dnssec: true
   edns_client_subnet:
     custom_ip: ""
-    enabled: false
+    enabled: true
     use_custom: false
   max_goroutines: 300
   handle_ddr: true
   ipset: []
   ipset_file: ""
   bootstrap_prefer_ipv6: false
-  filtering_enabled: true
-  filters_update_interval: 24
-  parental_enabled: false
-  safebrowsing_enabled: false
-  safebrowsing_cache_size: 1048576
-  safesearch_cache_size: 1048576
-  parental_cache_size: 1048576
-  cache_time: 30
-  safe_search:
-    enabled: false
-    bing: true
-    duckduckgo: true
-    google: true
-    pixabay: true
-    yandex: true
-    youtube: true
-  rewrites: []
-  blocked_services:
-    schedule:
-      time_zone: UTC
-    ids: []
   upstream_timeout: 10s
   private_networks: []
   use_private_ptr_resolvers: false
@@ -100,6 +76,7 @@ dns:
   dns64_prefixes: []
   serve_http3: false
   use_http3_upstreams: false
+  serve_plain_dns: true
 tls:
   enabled: false
   server_name: ""
@@ -138,7 +115,7 @@ filters:
     url: http://sub.adtchrome.com/adt-chinalist-easylist.txt
     name: 广告终结者使用的拦截规则，基于ChinaList+EasyList修正维护
     id: 1648615177
-  - enabled: true
+  - enabled: false
     url: https://easylist-downloads.adblockplus.org/easylistchina.txt
     name: EasyList China-EasyList针对国内的补充规则
     id: 1648615178
@@ -154,7 +131,7 @@ filters:
     url: https://anti-ad.net/easylist.txt
     name: anti-ad
     id: 1677372990
-  - enabled: true
+  - enabled: false
     url: https://gist.githubusercontent.com/Ewpratten/a25ae63a7200c02c850fede2f32453cf/raw/b9318009399b99e822515d388b8458557d828c37/hosts-yt-ads
     name: YTB-ADS
     id: 1677379880
@@ -197,7 +174,11 @@ user_rules:
   - '@@||hub5pn.wap.sandai.net^$client=''10.0.0.55'''
   - '@@||etl-xlmc-ssl.xunlei.com^$client=''10.0.0.55'''
   - '@@||nj.t.bcsp2p.baidu.com^$client=''10.0.0.13'''
-  - ""
+  - '@@||mb.yidianzixun.com^$important'
+  - '@@||v3-be-pack.pglstatp-toutiao.com^$important'
+  - '@@||v6-be-pack-nxyd.pglstatp-toutiao.com^$important'
+  - '@@||v9-be-pack.pglstatp-toutiao.com^$important'
+  - '@@||nadvideo2.baidu.com^$important'
 dhcp:
   enabled: false
   interface_name: ""
@@ -215,6 +196,36 @@ dhcp:
     lease_duration: 86400
     ra_slaac_only: false
     ra_allow_slaac: false
+filtering:
+  blocking_ipv4: ""
+  blocking_ipv6: ""
+  blocked_services:
+    schedule:
+      time_zone: UTC
+    ids: []
+  protection_disabled_until: null
+  safe_search:
+    enabled: false
+    bing: true
+    duckduckgo: true
+    google: true
+    pixabay: true
+    yandex: true
+    youtube: true
+  blocking_mode: default
+  parental_block_host: family-block.dns.adguard.com
+  safebrowsing_block_host: standard-block.dns.adguard.com
+  rewrites: []
+  safebrowsing_cache_size: 1048576
+  safesearch_cache_size: 1048576
+  parental_cache_size: 1048576
+  cache_time: 30
+  filters_update_interval: 24
+  blocked_response_ttl: 10
+  filtering_enabled: true
+  parental_enabled: false
+  safebrowsing_enabled: false
+  protection_enabled: true
 clients:
   runtime_sources:
     whois: true
@@ -235,4 +246,4 @@ os:
   group: ""
   user: ""
   rlimit_nofile: 0
-schema_version: 24
+schema_version: 27
