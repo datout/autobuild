@@ -149,7 +149,7 @@ CONFIG_TARGET_armsr_armv8_DEVICE_generic=y
 <br>
 <br />
  
-《[Telegram聊天吹水群](https://t.me/heiheiheio)》
+《[Telegram聊天吹水群](https://t.me/heiheihei)》
 
 《[Telegram中文设置方法](https://github.com/danshui-git/shuoming/blob/master/tele.md)》
 
