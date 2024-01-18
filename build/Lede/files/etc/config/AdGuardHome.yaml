@@ -52,12 +52,12 @@ dns:
   trusted_proxies:
     - 127.0.0.0/8
     - ::1/128
-  cache_size: 4194304
+  cache_size: 0
   cache_ttl_min: 0
   cache_ttl_max: 0
-  cache_optimistic: true
+  cache_optimistic: false
   bogus_nxdomain: []
-  aaaa_disabled: true
+  aaaa_disabled: false
   enable_dnssec: true
   edns_client_subnet:
     custom_ip: ""
@@ -137,6 +137,14 @@ filters:
     id: 1677379880
 whitelist_filters: []
 user_rules:
+  - '@@||*.*^$client=''10.0.0.56'''
+  - '@@||*.*^$client=''10.0.0.13'''
+  - '@@||*.*^$client=''10.0.0.52'''
+  - '@@||*.*^$client=''10.0.0.53'''
+  - '@@||*.*^$client=''10.0.0.54'''
+  - '@@||*.*^$client=''10.0.0.58'''
+  - '@@||*.*^$client=''10.0.0.60'''
+  - '@@||blackhole.m.jd.com^$important'
   - '@@||taobao.com^$important'
   - '@@||jd.com^important'
   - '@@||flyme.cn^$important'
@@ -145,40 +153,18 @@ user_rules:
   - '@@||flydigi.com^'
   - '@@||pv.sohu.com^$important'
   - '@@||o1098464.ingest.sentry.io^$important'
-  - '||awaliwa.com^$important'
-  - '||euqq.cn^$important'
-  - '||qisaoba.com^$important'
-  - '||atgowan.com^$important'
-  - '@@||hub5pn.wap.sandai.net^$client=''10.0.0.50'''
-  - '@@||etl-xlmc-ssl.xunlei.com^$client=''10.0.0.52'''
-  - '@@||dataflow.biliapi.com^$client=''10.0.0.68'''
-  - '@@||tracker.dcdn.baidu.com^$client=''10.0.0.52'''
-  - '@@||hub5pn.wap.sandai.net^$client=''10.0.0.52'''
-  - '@@||etl-xlmc-ssl.xunlei.com^$client=''10.0.0.50'''
-  - '@@||idx.m.hub.sandai.net^$client=''10.0.0.50'''
-  - '@@||master.wap.dphub.sandai.net^$client=''10.0.0.50'''
-  - '@@||dataflow.biliapi.com^$client=''10.0.0.53'''
-  - '@@||dataflow.biliapi.com^$client=''10.0.0.56'''
   - '@@||api.e.kuaishou.com^$important'
   - '@@||activity.e.kuaishou.com^$important'
   - '@@||clients4.google.com^$important'
   - '@@||tianqi.2345.com^$important'
   - '@@||dataflow.biliapi.com^$important'
-  - '@@||etl-xlmc-ssl.xunlei.com^$client=''10.0.0.13'''
-  - '@@||hub5pn.wap.sandai.net^$client=''10.0.0.13'''
-  - '@@||hub5pn.wap.sandai.net^$client=''10.0.0.60'''
-  - '@@||etl-xlmc-ssl.xunlei.com^$client=''10.0.0.60'''
-  - '@@||hub5pn.wap.sandai.net^$client=''10.0.0.58'''
-  - '@@||etl-xlmc-ssl.xunlei.com^$client=''10.0.0.58'''
-  - '@@||blackhole.m.jd.com^$important'
-  - '@@||hub5pn.wap.sandai.net^$client=''10.0.0.55'''
-  - '@@||etl-xlmc-ssl.xunlei.com^$client=''10.0.0.55'''
-  - '@@||nj.t.bcsp2p.baidu.com^$client=''10.0.0.13'''
   - '@@||mb.yidianzixun.com^$important'
   - '@@||v3-be-pack.pglstatp-toutiao.com^$important'
   - '@@||v6-be-pack-nxyd.pglstatp-toutiao.com^$important'
   - '@@||v9-be-pack.pglstatp-toutiao.com^$important'
   - '@@||nadvideo2.baidu.com^$important'
+  - '@@||mmstat.com^$client=''10.0.0.10'''
+  - ""
 dhcp:
   enabled: false
   interface_name: ""
