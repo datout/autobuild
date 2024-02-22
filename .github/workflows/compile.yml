@@ -62,7 +62,7 @@ jobs:
         source build/${FOLDER_NAME}/common.sh && CPU_Priority
 
     - name: Space cleanup and Initialization environment
-       env:
+      env:
         DEBIAN_FRONTEND: noninteractive
       run: |
         docker rmi `docker images -q`
